@@ -7,28 +7,22 @@ namespace EstruturaPilha
     {
         static void Main(string[] args)
         {
-            PilhaDinamica p = new PilhaDinamica();
 
-            bool flVazia = p.EstaVazia();
-            p.Empilha(1);
+
+            PilhaEstatica p = new PilhaEstatica();
+            try
+            {
+
             p.Empilha(2);
-            p.Empilha(3);
-            var numeros = p.RetornaTodosElementos();
-            foreach (int num in numeros)
-            {
-                Console.WriteLine(num);
-            }
-            Console.ReadKey();
-            p.Desempilha();
-            Console.WriteLine("E agora");
-            numeros = p.RetornaTodosElementos();
-            foreach (int num in numeros)
-            {
-                Console.WriteLine(num);
-            }
-
+            p.Empilha(2);
+            p.EmpilhaUnico(2);
 
             Console.ReadKey();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

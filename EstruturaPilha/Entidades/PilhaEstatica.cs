@@ -81,7 +81,7 @@ namespace EstruturaPilha.Entidades
         {
             int valorAtual = int.MinValue;
             
-            for(int i = 0; i < (Indice - 1); i++)
+            for(int i = 0; i < Tamanho(); i++)
             {
                 if(valorAtual < VetorElementos[Indice - 1])
                 {
@@ -102,6 +102,53 @@ namespace EstruturaPilha.Entidades
                 }
             }
             return valorAtual;
+        }
+
+        public double MediaAritmetica()
+        {
+            double resultado = 0;
+
+            for (int i = 0; i < Tamanho(); i++)
+            {
+                resultado = resultado + VetorElementos[i];
+            }
+
+            resultado = resultado / Tamanho();
+
+            return resultado;
+        }
+
+        public void DesempilhaTodos()
+        {
+            int tamanho = Tamanho();
+
+            for(int i = 0; i < tamanho; i++)
+            {
+                Desempilha();
+            }
+        }
+
+        public void EmpilhaUnico(int k)
+        {
+            int tamanho = Tamanho();
+            bool existeValor = false;
+
+            for(int i = 0; i < tamanho; i++)
+            {
+                if(VetorElementos[i] == k)
+                {
+                    existeValor = true;
+                }
+            }
+
+            if (existeValor)
+            {
+                throw new ArgumentException("Valor já existe, valor não inserido");
+            }
+            else
+            {
+                Empilha(k);
+            }
         }
         
     }
